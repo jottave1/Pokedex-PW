@@ -5,15 +5,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+
     <link rel="stylesheet" href="pkx.css">
+
 </head>
 
 <body>
-    
+        
+
+
+
+
+
+
 <div>
+
+    <input  type="text" id="pokemon" name="numero" class="input">
+
+     <button id="butao" type="button" onclick="Clicar()" class="button">
+        Buscar Na Pokedéx
+     </button>
+
+<div>
+
+    <div>
+        <h3 id="nome" class="nome"> </h3><br> 
+        <h3 id="tipo" class="nome"> </h3>  <br>
+        <img src="" id="img" alt="">
+     </div>
+
+</div>
+
 
 <script>
 
+const tiposPT = {
+  normal: "normal",
+  fire: "fogo",
+  water: "água",
+  grass: "grama",
+  electric: "elétrico",
+  ice: "gelo",
+  fighting: "lutador",
+  poison: "veneno",
+  ground: "terra",
+  flying: "voador",
+  psychic: "psíquico",
+  bug: "inseto",
+  rock: "pedra",
+  ghost: "fantasma",
+  dragon: "dragão",
+  dark: "noturno",
+  steel: "aço",
+  fairy: "fada"
+};
+
+
+
+    function Clicar()
+                {
+                    var input = document.getElementById("pokemon")
+                    var nome = document.getElementById("nome")
+                    var img = document.getElementById("img")
+                    var tipo = document.getElementById("tipo")
+                    
+                    var url = "https://pokeapi.co/api/v2/pokemon/" + input.value
+
+                    fetch(url)
+                        .then(response => response.json())
+                .then((dados) => {
+            
+                    nome.textContent = dados.name               
+                    img.src = dados.sprites.front_default
+                    img.style.width="200px"
+                    const tipoIngles = dados.types[0].type.name;
+                    const tipoTraduzido = tiposPT[tipoIngles] || tipoIngles;
+                    tipo.textContent = "tipo " + tipoTraduzido;
+
+                })
+
+                } 
 
 
 </script>
