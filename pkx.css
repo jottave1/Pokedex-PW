@@ -1,4 +1,39 @@
 .nome{
     font-family: Arial, Helvetica, sans-serif;
-
 }
+
+
+ body{
+    background-image: url('fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    }
+
+    .search-container {
+        text-align: center; 
+        margin-top: 20px; 
+      }
+      
+      .search-box {
+        width: 300px; 
+        padding: 8px;
+        border-radius: 5px;
+      }
+
+      .button{
+        margin-top: 135px;
+        background-color:#4682B4;
+        padding: 8px;
+        border-radius: 5px;
+        color: #FFFF00;
+      }
+
+      .logo{
+          height: 100px;
+      }
+      

@@ -11,20 +11,19 @@
 </head>
 
 <body>
-        
-
-
-
-
+    
+        <img src="pokemon.png" class="logo">
 
 
 <div>
+        <div class="search-container">
 
-    <input  type="text" id="pokemon" name="numero" class="input">
+        <input class="search-box"  type="text" id="pokemon" name="numero" class="input" placeholder="Procurar Pokemon">
 
-     <button id="butao" type="button" onclick="Clicar()" class="button">
-        Buscar Na Pokedéx
-     </button>
+        <button id="butao" type="button" onclick="Clicar()" class="button">Buscar Na Pokedéx</button>
+
+</div>
+
 
 <div>
 
@@ -76,8 +75,8 @@ const tiposPT = {
                 .then((dados) => {
             
                     nome.textContent = dados.name               
-                    img.src = dados.sprites.front_default
-                    img.style.width="200px"
+                    img.src = dados.sprites.front_default;
+                    img.style.width="150px"
                     const tipoIngles = dados.types[0].type.name;
                     const tipoTraduzido = tiposPT[tipoIngles] || tipoIngles;
                     tipo.textContent = "tipo " + tipoTraduzido;
