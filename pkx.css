@@ -14,26 +14,38 @@
     padding: 0;
     }
 
-    .search-container {
+  .search-container {
         text-align: center; 
         margin-top: 20px; 
       }
       
-      .search-box {
+    .search-box {
         width: 300px; 
         padding: 8px;
         border-radius: 5px;
       }
 
-      .button{
+    .button{
         margin-top: 135px;
         background-color:#4682B4;
         padding: 8px;
         border-radius: 5px;
         color: #FFFF00;
+       
       }
 
-      .logo{
+    .logo{
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          display: block;
+          margin: 0;
+          padding: 0;
           height: 100px;
+          color: #ffffff;
+          font-size: 24px;
+          font-weight: bold;
+          top: 12px;
+          
       }
       
