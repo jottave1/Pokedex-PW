@@ -26,14 +26,39 @@
 
 </div>
 
-<div class="card">
+<div class="pokemon-card">
+    <div class="pokemon-header">
+        <span class="pokemon-type">Grass</span>
+        <span class="pokemon-hp">HP</span>
+    </div>
+    <img id="img" src="">
+    <h2 class="nome" id="nomePokemon"></h2>
 
-    <img src="" id="img" class="img-card">
-    <h3 id="nome" class="nome"> </h3>
+    <div class="stats">
+        <span>Attack:</span>
+        <div class="barra">
+            <div class="porcentagem" id="atkBar" style="width: 49%;"></div>
+        </div>
+        <span id="atkValue">49</span>
+    </div>
 
-    <h3 id="tipo" class="nome"> </h3>  <br>
+    <div class="stats">
+        <span>Defense:</span>
+        <div class="barra">
+            <div class="porcentagem" id="defBar" style="width: 49%;"></div>
+        </div>
+        <span id="defValue">49</span>
+    </div>
 
+    <div class="stats">
+        <span>Speed:</span>
+        <div class="barra">
+            <div class="porcentagem" id="spdBar" style="width: 45%;"></div>
+        </div>
+        <span id="spdValue">45</span>
+    </div>
 </div>
+
 
 
 
@@ -43,6 +68,10 @@
 
 
 <script>
+
+
+
+
 
 const tiposPT = {
   normal: "normal",
@@ -65,38 +94,52 @@ const tiposPT = {
   fairy: "fada"
 };
 
+function Clicar() {
+    var input = document.getElementById("pokemon");
+    var nome = document.getElementById("nomePokemon");
+    var img = document.getElementById("img");
+    var tipo = document.querySelector(".pokemon-type");
 
+    var url = "https://pokeapi.co/api/v2/pokemon/" + input.value.toLowerCase();
 
-    function Clicar()
-                {
-                    var input = document.getElementById("pokemon")
-                    var nome = document.getElementById("nome")
-                    var img = document.getElementById("img")
-                    var tipo = document.getElementById("tipo")
-                    
-                    var url = "https://pokeapi.co/api/v2/pokemon/" + input.value
+    if (!input.value) {
+        alert("Por favor, insira o nome ou número do Pokémon.");
+        return;
+    }
 
-                    if (!input) {
-                            alert("Por favor, insira o nome ou número do Pokémon.");
-                                                                                        return;
-                    }
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Pokémon não encontrado.");
+            }
+            return response.json();
+        })
+        .then((dados) => {
+            nome.textContent = dados.name;
+            img.src = dados.sprites.front_default;
+            img.style.width = "200px";
 
-                    fetch(url)
-                        .then(response => response.json())
-                .then((dados) => {
+            const tipoIngles = dados.types[0].type.name;
+            const tipoTraduzido = tiposPT[tipoIngles] || tipoIngles;
+            tipo.textContent = tipoTraduzido;
+
             
-                    nome.textContent = dados.name               
-                    img.src = dados.sprites.front_default;
-                    img.style.width="200px"
-                    const tipoIngles = dados.types[0].type.name;
-                    const tipoTraduzido = tiposPT[tipoIngles] || tipoIngles;
-                    tipo.textContent = "tipo " + tipoTraduzido;
+            document.getElementById('atkBar').style.width = dados.stats[1].base_stat + '%';
+            document.getElementById('atkValue').textContent = dados.stats[1].base_stat;
 
-                    
+            document.getElementById('defBar').style.width = dados.stats[2].base_stat + '%';
+            document.getElementById('defValue').textContent = dados.stats[2].base_stat;
 
-                })
+            document.getElementById('spdBar').style.width = dados.stats[5].base_stat + '%';
+            document.getElementById('spdValue').textContent = dados.stats[5].base_stat;
 
-                } 
+            document.querySelector('.pokemon-hp').textContent = 'HP ' + dados.stats[0].base_stat;
+
+        })
+        .catch(error => {
+            alert(error.message);
+        });
+} 
 
 
 </script>
