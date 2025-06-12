@@ -7,6 +7,7 @@
     <title>Pokedex</title>
 
     <link rel="stylesheet" href="pkx.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 </head>
 
@@ -27,20 +28,26 @@
 </div>
 
 <div class="pokemon-card">
+
     <div class="pokemon-header">
-        <span class="pokemon-type">Grass</span>
-        <span class="pokemon-hp">HP</span>
+        <span class="pokemon-type">GRASS</span>
+        <span class="pokemon-hp">HP<span id="hpValue"> 
     </div>
+
     <img id="img" src="">
     <h2 class="nome" id="nomePokemon"></h2>
 
     <div class="stats">
+
         <span>Attack:</span>
+
         <div class="barra">
+
             <div class="porcentagem" id="atkBar" style="width: 49%;"></div>
         </div>
+
         <span id="atkValue">49</span>
-    </div>
+    </div><br>
 
     <div class="stats">
         <span>Defense:</span>
@@ -48,7 +55,7 @@
             <div class="porcentagem" id="defBar" style="width: 49%;"></div>
         </div>
         <span id="defValue">49</span>
-    </div>
+    </div><br>
 
     <div class="stats">
         <span>Speed:</span>
@@ -74,24 +81,24 @@
 
 
 const tiposPT = {
-  normal: "normal",
-  fire: "fogo",
-  water: "água",
-  grass: "grama",
-  electric: "elétrico",
-  ice: "gelo",
-  fighting: "lutador",
-  poison: "veneno",
-  ground: "terra",
-  flying: "voador",
-  psychic: "psíquico",
-  bug: "inseto",
-  rock: "pedra",
-  ghost: "fantasma",
-  dragon: "dragão",
-  dark: "noturno",
-  steel: "aço",
-  fairy: "fada"
+  normal: "Normal",
+  fire: "Fogo",
+  water: "Água",
+  grass: "Grama",
+  electric: "Elétrico",
+  ice: "Gelo",
+  fighting: "Lutador",
+  poison: "Veneno",
+  ground: "Terra",
+  flying: "Voador",
+  psychic: "Psíquico",
+  bug: "Inseto",
+  rock: "Pedra",
+  ghost: "Fantasma",
+  dragon: "Dragão",
+  dark: "Noturno",
+  steel: "Aço",
+  fairy: "Fada"
 };
 
 function Clicar() {
@@ -115,7 +122,10 @@ function Clicar() {
             return response.json();
         })
         .then((dados) => {
-            nome.textContent = dados.name;
+
+            document.querySelector('.pokemon-card').style.display = 'block';
+
+            nome.textContent = dados.name.charAt(0).toUpperCase() + dados.name.slice(1);
             img.src = dados.sprites.front_default;
             img.style.width = "200px";
 
