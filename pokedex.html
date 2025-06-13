@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="pkx.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
@@ -31,40 +32,57 @@
 
     <div class="pokemon-header">
         <span class="pokemon-type">GRASS</span>
-        <span class="pokemon-hp">HP<span id="hpValue"> 
+        <span class="pokemon-hp">HP<span id="hpValue">
+            
     </div>
 
+    <div class="pokemon-image-container">
     <img id="img" src="">
-    <h2 class="nome" id="nomePokemon"></h2>
-
-    <div class="stats">
-
-        <span>Attack:</span>
-
-        <div class="barra">
-
-            <div class="porcentagem" id="atkBar" style="width: 49%;"></div>
-        </div>
-
-        <span id="atkValue">49</span>
-    </div><br>
-
-    <div class="stats">
-        <span>Defense:</span>
-        <div class="barra">
-            <div class="porcentagem" id="defBar" style="width: 49%;"></div>
-        </div>
-        <span id="defValue">49</span>
-    </div><br>
-
-    <div class="stats">
-        <span>Speed:</span>
-        <div class="barra">
-            <div class="porcentagem" id="spdBar" style="width: 45%;"></div>
-        </div>
-        <span id="spdValue">45</span>
-    </div>
 </div>
+<h2 class="nome" id="nomePokemon"></h2>
+
+    
+
+<div class="stats">
+    <span>Attack:</span>
+    <div class="barra">
+        <div class="porcentagem" id="atkBar"></div>
+    </div>
+    <span id="atkValue">49</span>
+</div>
+
+<div class="stats">
+    <span>Defense:</span>
+    <div class="barra">
+        <div class="porcentagem" id="defBar"></div>
+    </div>
+    <span id="defValue">49</span>
+</div>
+
+<div class="stats">
+    <span>Speed:</span>
+    <div class="barra">
+        <div class="porcentagem" id="spdBar"></div>
+    </div>
+    <span id="spdValue">45</span>
+</div>
+
+<div class="stats">
+    <span>Sp.Attack:</span>
+    <div class="barra">
+        <div class="porcentagem" id="spAtkBar"></div>
+    </div>
+    <span id="spAtkValue">65</span>
+</div>
+
+<div class="stats">
+    <span>Sp.Defense:</span>
+    <div class="barra">
+        <div class="porcentagem" id="spDefBar"></div>
+    </div>
+    <span id="spDefValue">65</span>
+</div>
+
 
 
 
@@ -142,6 +160,15 @@ function Clicar() {
 
             document.getElementById('spdBar').style.width = dados.stats[5].base_stat + '%';
             document.getElementById('spdValue').textContent = dados.stats[5].base_stat;
+
+            
+            document.getElementById('spAtkBar').style.width = dados.stats[3].base_stat + '%';
+            document.getElementById('spAtkValue').textContent = dados.stats[3].base_stat;
+
+
+            document.getElementById('spDefBar').style.width = dados.stats[4].base_stat + '%';
+            document.getElementById('spDefValue').textContent = dados.stats[4].base_stat;
+
 
             document.querySelector('.pokemon-hp').textContent = 'HP ' + dados.stats[0].base_stat;
 
