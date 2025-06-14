@@ -9,179 +9,169 @@
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="pkx.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
-    
+    <img src="pokedex.png" class="logo">
 
-    
-        <img src="pokedex.png" class="logo">
-
-
-<div>
-        <div class="search-container">
-
-        <input class="search-box"  type="text" id="pokemon" name="numero" class="input" placeholder="Procurar Pokemon">
-
+    <div class="search-container">
+        <input class="search-box" type="text" id="pokemon" name="numero" placeholder="Procurar Pokemon">
         <button id="butao" type="button" onclick="Clicar()" class="button">Buscar Na Pokedéx</button>
-
-</div>
-
-<div class="pokemon-card">
-
-    <div class="pokemon-header">
-        <span class="pokemon-type">GRASS</span>
-        <span class="pokemon-hp">HP<span id="hpValue">
-            
     </div>
 
-    <div class="pokemon-image-container">
-    <img id="img" src="">
-</div>
-<h2 class="nome" id="nomePokemon"></h2>
+    <div class="pokemon-card">
+        <div class="pokemon-header">
+            <span class="pokemon-type">GRASS</span>
+            <span class="pokemon-hp">HP<span id="hpValue"></span></span>
+        </div>
 
-    
+        <div class="pokemon-image-container">
+            <img id="img" src="">
+        </div>
 
-<div class="stats">
-    <span>Attack:</span>
-    <div class="barra">
-        <div class="porcentagem" id="atkBar"></div>
+        <h2 class="nome" id="nomePokemon"></h2>
+
+        <div class="stats">
+            <span>Attack:</span>
+            <div class="barra">
+                <div class="porcentagem" id="atkBar"></div>
+            </div>
+            <span id="atkValue">49</span>
+        </div>
+
+        <div class="stats">
+            <span>Defense:</span>
+            <div class="barra">
+                <div class="porcentagem" id="defBar"></div>
+            </div>
+            <span id="defValue">49</span>
+        </div>
+
+        <div class="stats">
+            <span>Speed:</span>
+            <div class="barra">
+                <div class="porcentagem" id="spdBar"></div>
+            </div>
+            <span id="spdValue">45</span>
+        </div>
+
+        <div class="stats">
+            <span>Sp.Attack:</span>
+            <div class="barra">
+                <div class="porcentagem" id="spAtkBar"></div>
+            </div>
+            <span id="spAtkValue">65</span>
+        </div>
+
+        <div class="stats">
+            <span>Sp.Defense:</span>
+            <div class="barra">
+                <div class="porcentagem" id="spDefBar"></div>
+            </div>
+            <span id="spDefValue">65</span>
+        </div>
     </div>
-    <span id="atkValue">49</span>
-</div>
 
-<div class="stats">
-    <span>Defense:</span>
-    <div class="barra">
-        <div class="porcentagem" id="defBar"></div>
-    </div>
-    <span id="defValue">49</span>
-</div>
+    <script>
+        const tiposPT = {
+            normal: "Normal",
+            fire: "Fogo",
+            water: "Água",
+            grass: "Grama",
+            electric: "Elétrico",
+            ice: "Gelo",
+            fighting: "Lutador",
+            poison: "Veneno",
+            ground: "Terra",
+            flying: "Voador",
+            psychic: "Psíquico",
+            bug: "Inseto",
+            rock: "Pedra",
+            ghost: "Fantasma",
+            dragon: "Dragão",
+            dark: "Noturno",
+            steel: "Aço",
+            fairy: "Fada"
+        };
 
-<div class="stats">
-    <span>Speed:</span>
-    <div class="barra">
-        <div class="porcentagem" id="spdBar"></div>
-    </div>
-    <span id="spdValue">45</span>
-</div>
+        const coresPorTipo = {
+            normal: "#A8A77A",
+            fire: "#EE8130",
+            water: "#6390F0",
+            electric: "#F7D02C",
+            grass: "#7AC74C",
+            ice: "#96D9D6",
+            fighting: "#C22E28",
+            poison: "#A33EA1",
+            ground: "#E2BF65",
+            flying: "#A98FF3",
+            psychic: "#F95587",
+            bug: "#A6B91A",
+            rock: "#B6A136",
+            ghost: "#735797",
+            dragon: "#6F35FC",
+            dark: "#705746",
+            steel: "#B7B7CE",
+            fairy: "#D685AD"
+        };
 
-<div class="stats">
-    <span>Sp.Attack:</span>
-    <div class="barra">
-        <div class="porcentagem" id="spAtkBar"></div>
-    </div>
-    <span id="spAtkValue">65</span>
-</div>
+        function Clicar() {
+            var input = document.getElementById("pokemon");
+            var nome = document.getElementById("nomePokemon");
+            var img = document.getElementById("img");
+            var tipo = document.querySelector(".pokemon-type");
 
-<div class="stats">
-    <span>Sp.Defense:</span>
-    <div class="barra">
-        <div class="porcentagem" id="spDefBar"></div>
-    </div>
-    <span id="spDefValue">65</span>
-</div>
+            var url = "https://pokeapi.co/api/v2/pokemon/" + input.value.toLowerCase();
 
-
-
-
-
-    
-
-
-
-
-<script>
-
-
-
-
-
-const tiposPT = {
-  normal: "Normal",
-  fire: "Fogo",
-  water: "Água",
-  grass: "Grama",
-  electric: "Elétrico",
-  ice: "Gelo",
-  fighting: "Lutador",
-  poison: "Veneno",
-  ground: "Terra",
-  flying: "Voador",
-  psychic: "Psíquico",
-  bug: "Inseto",
-  rock: "Pedra",
-  ghost: "Fantasma",
-  dragon: "Dragão",
-  dark: "Noturno",
-  steel: "Aço",
-  fairy: "Fada"
-};
-
-function Clicar() {
-    var input = document.getElementById("pokemon");
-    var nome = document.getElementById("nomePokemon");
-    var img = document.getElementById("img");
-    var tipo = document.querySelector(".pokemon-type");
-
-    var url = "https://pokeapi.co/api/v2/pokemon/" + input.value.toLowerCase();
-
-    if (!input.value) {
-        alert("Por favor, insira o nome ou número do Pokémon.");
-        return;
-    }
-
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Pokémon não encontrado.");
+            if (!input.value) {
+                alert("Por favor, insira o nome ou número do Pokémon.");
+                return;
             }
-            return response.json();
-        })
-        .then((dados) => {
 
-            document.querySelector('.pokemon-card').style.display = 'block';
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Pokémon não encontrado.");
+                    }
+                    return response.json();
+                })
+                .then((dados) => {
+                    document.querySelector('.pokemon-card').style.display = 'block';
 
-            nome.textContent = dados.name.charAt(0).toUpperCase() + dados.name.slice(1);
-            img.src = dados.sprites.front_default;
-            img.style.width = "200px";
+                    nome.textContent = dados.name.charAt(0).toUpperCase() + dados.name.slice(1);
+                    img.src = dados['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
+                    img.style.width = "125px";
 
-            const tipoIngles = dados.types[0].type.name;
-            const tipoTraduzido = tiposPT[tipoIngles] || tipoIngles;
-            tipo.textContent = tipoTraduzido;
+                    const tipoIngles = dados.types[0].type.name;
+                    const tipoTraduzido = tiposPT[tipoIngles] || tipoIngles;
+                    tipo.textContent = tipoTraduzido;
 
-            
-            document.getElementById('atkBar').style.width = dados.stats[1].base_stat + '%';
-            document.getElementById('atkValue').textContent = dados.stats[1].base_stat;
+                    const card = document.querySelector('.pokemon-card');
+                    const corTipo = coresPorTipo[tipoIngles] || "#c8e0bf";
+                    card.style.background = `linear-gradient(135deg, white, ${corTipo} )`;
 
-            document.getElementById('defBar').style.width = dados.stats[2].base_stat + '%';
-            document.getElementById('defValue').textContent = dados.stats[2].base_stat;
+                    document.getElementById('atkBar').style.width = dados.stats[1].base_stat + '%';
+                    document.getElementById('atkValue').textContent = dados.stats[1].base_stat;
 
-            document.getElementById('spdBar').style.width = dados.stats[5].base_stat + '%';
-            document.getElementById('spdValue').textContent = dados.stats[5].base_stat;
+                    document.getElementById('defBar').style.width = dados.stats[2].base_stat + '%';
+                    document.getElementById('defValue').textContent = dados.stats[2].base_stat;
 
-            
-            document.getElementById('spAtkBar').style.width = dados.stats[3].base_stat + '%';
-            document.getElementById('spAtkValue').textContent = dados.stats[3].base_stat;
+                    document.getElementById('spdBar').style.width = dados.stats[5].base_stat + '%';
+                    document.getElementById('spdValue').textContent = dados.stats[5].base_stat;
 
+                    document.getElementById('spAtkBar').style.width = dados.stats[3].base_stat + '%';
+                    document.getElementById('spAtkValue').textContent = dados.stats[3].base_stat;
 
-            document.getElementById('spDefBar').style.width = dados.stats[4].base_stat + '%';
-            document.getElementById('spDefValue').textContent = dados.stats[4].base_stat;
+                    document.getElementById('spDefBar').style.width = dados.stats[4].base_stat + '%';
+                    document.getElementById('spDefValue').textContent = dados.stats[4].base_stat;
 
+                    document.querySelector('.pokemon-hp').textContent = 'HP ' + dados.stats[0].base_stat;
 
-            document.querySelector('.pokemon-hp').textContent = 'HP ' + dados.stats[0].base_stat;
-
-        })
-        .catch(error => {
-            alert(error.message);
-        });
-} 
-
-
-</script>
-
-</div>
-
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        }
+    </script>
 </body>
 </html>
