@@ -60,10 +60,10 @@ body {
     box-shadow: 5px 5px 15px #00000066;
     text-align: center;
     padding: 16px;
-    margin: 135px;
     display: none;
     overflow: visible;
-    transform: translateX(200px);
+    margin-left: 40%;
+    margin-top: 35px;
 }
 
 .pokemon-header {
