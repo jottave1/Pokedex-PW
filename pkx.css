@@ -12,7 +12,7 @@
 }
 
 body {
-    background-image: url('fundo.jpg');
+    background-color: #78c8f6;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -42,6 +42,49 @@ body {
     font-size: 10px;
 }
 
+.anterior{
+    margin-top: 135px;
+    background-color: #4682B4;
+    padding: 8px;
+    border-radius: 5px;
+    color: #FFFF00;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+}
+
+.proximo{
+    margin-top: 135px;
+    background-color: #4682B4;
+    padding: 8px;
+    border-radius: 5px;
+    color: #FFFF00;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    margin-left: -10px;
+    margin-top: 20px;
+}
+
+.botoes{
+   display: flex;
+    margin-top: 15px;
+   
+}
+
+.botoes button{
+    margin:  10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #f0f0f0;
+    font-family: 'Press Start 2P', cursive;
+    
+}
+
+.botoes button:hover{
+     background-color: #ddd;
+}
+
 .logo {
     position: absolute;
     left: 50%;
@@ -62,8 +105,8 @@ body {
     padding: 16px;
     display: none;
     overflow: visible;
-    margin-left: 40%;
-    margin-top: 100px;
+    margin-left: 42%;
+    margin-top: 50px;
 }
 
 .pokemon-header {
@@ -87,8 +130,8 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    font-size: 15px;
-    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 10px;
+    font-family: 'Press Start 2P', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -133,3 +176,4 @@ body {
     height: 100%;
     background: green;
 }
+
